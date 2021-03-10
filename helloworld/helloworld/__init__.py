@@ -53,3 +53,9 @@ def name1():
 @app.route('/name2')
 def name2():
     return render_template('index.html', name="OneWay")
+
+
+@app.route("/board/<article_id>")
+@app.route("/board", defaults={ "article_id": 10 })
+def board_idx(article_id):
+    return "{}번 게시물을 보고 계십니다.".format(article_id)

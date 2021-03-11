@@ -9,7 +9,12 @@ app.config.update(
 )
 
 
-@app.route("/")
+@app.route('/')
+def index():
+    return render_template('index.html', name="OneWay")
+
+
+@app.route("/hello")
 def helloworld():
     return 'Hello, World!'
 
@@ -50,20 +55,17 @@ def name1():
 </html>'''
 
 
-@app.route('/name2')
-def name2():
-    return render_template('index.html', name="OneWay")
-
-
 @app.route("/board/<article_id>")
-@app.route("/board", defaults={ "article_id": 10 })
+@app.route("/board", defaults={"article_id": 10})
 def board_idx(article_id):
     return "{}번 게시물을 보고 계십니다.".format(article_id)
+
 
 @app.route("/board", redirect_to="/new_board")
 def board():
     return "/board URL을 호출하셨는데 실행이 안될겁니다"
-    
+
+
 @app.route("/new_board")
 def new_board():
     return "/new_board URL이 호출되었습니다."

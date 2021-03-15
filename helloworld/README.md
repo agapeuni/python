@@ -2,7 +2,7 @@ python
 ========
 
 # HelloWorld
-설명
+Flask 기반의 웹 프로그래밍
 
 # pybo
-설명
+점프 투 플라스크 내용을 실습

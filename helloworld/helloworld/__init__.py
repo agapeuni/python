@@ -1,12 +1,11 @@
-from flask import Flask, render_template
-from flask import Response, make_response
+from flask import Flask, request, render_template, redirect
+from flask import Response, make_response, session
 
 app = Flask(__name__)
 app.debug = True
-
-app.config.update(
-    DEBUG=True
-)
+app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
+app.config.update(DEBUG=True)
+app.config.update(MAX_CONTENT_LENGTH=1024*1024*10)
 
 
 @app.route('/')
@@ -14,64 +13,45 @@ def index():
     return render_template('index.html', name="OneWay")
 
 
-@app.route("/hello")
-def helloworld():
-    return 'Hello, World!'
+@app.route("/example/max_content_len", methods=["GET"])
+def example_content_length():
+    print(request.max_content_length)
+    return ""
 
 
-@app.route("/res1")
-def res1():
-    custom_response = Response("Custom Response", '200 OK', {
-        "Program": "Flask Web Application"
-    })
 
-    return make_response(custom_response)
+@app.route("/session_set")
+def session_set():
+    session['ID'] = 'JPUB Flask Session Setting'
+    return "세션이 설정되었습니다"
 
+@app.route("/session_out")
+def session_out():
+    del session['ID']
+    return "세션이 제거되었습니다."
 
-@app.route("/res2")
-def res2():
-    return make_response("Custom Response")
+@app.route("/cookie_set")
+def cookie_set():
+    custom_resp = Response("Cookie를 설정합니다")
+    custom_resp.set_cookie("ID", "JPUB Flask Programming")
 
-
-@app.route("/res3")
-def res3():
-    return make_response(('Tuple Custom Response', 'OK', {
-        'response_method': 'Tuple Response'
-    }))
+    return custom_resp
 
 
-@app.route("/board/<article_id>")
-@app.route("/board", defaults={"article_id": 10})
-def board_idx(article_id):
-    print(article_id)
-    return "{}번 게시물을 보고 계십니다.".format(article_id)
+@app.route("/cookie_out")
+def cookie_out():
+    custom_resp = Response("Cookie를 종료합니다")
+    custom_resp.set_cookie("ID", expires=0)
+
+    return custom_resp
 
 
-@app.route("/board", redirect_to="/new_board")
-def board():
-    print("board")
-    return "/board URL을 호출하셨는데 실행이 안될겁니다"
+@app.route("/cookie_status")
+def cookie_status():
+    return "ID 쿠키는 %s 값을 가지고 있습니다" % request.cookies.get('ID', '빈 문자열')
 
 
-@app.route("/new_board")
-def new_board():
-    return "/new_board URL이 호출되었습니다."
-
-
-@app.route("/board/<id>/<id2>", redirect_to=redirect_new_board)
-def board(id, id2):
-    return "호출되지 않을 것입니다"
-
-
-def redirect_new_board(adapter, id, id2):
-    return "/new_board/{0}/{1}".format(id, id2)
-
-
-@app.route("/new_board/<id>/<id2>")
-def new_board(id, id2):
-    return "{0}, {1} 변수와 함께 new_board URL이 호출되었습니다".format(id, id2)
-
-
+"""
 @app.before_first_request
 def before_first_request():
     # 앱이 기동되고 나서 첫번째 HTTP 요청에만 응답합니다.
@@ -101,3 +81,4 @@ def teardown_request(exception):
 def teardown_appcontext(exception):
     # HTTP 요청의 애플리케이션 컨텍스트가 종료될때 실행
     print(">5 teardown_appcontext")
+"""

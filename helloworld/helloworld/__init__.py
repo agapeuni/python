@@ -1,16 +1,51 @@
 from flask import Flask, request, render_template, redirect
 from flask import Response, make_response, session
 
+import logging
+import logging.handlers
+
 app = Flask(__name__)
 app.debug = True
-app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
-app.config.update(DEBUG=True)
-app.config.update(MAX_CONTENT_LENGTH=1024*1024*10)
+app.debug_log_format = "%(levelname)s in %(module)s [%(lineno)d]: %(message)s"
 
+
+log_format = logging.Formatter(
+    '"%(levelname)s in %(module)s [%(lineno)d]: %(message)s"')
+file_logger1 = logging.FileHandler('logs/helloword.log', 'a', 'utf-8', False)
+file_logger1.setFormatter(log_format)
+app.logger.addHandler(file_logger1)
+
+file_logger2 = logging.handlers.RotatingFileHandler(
+    'logs/helloword_rotate.log', mode='a', maxBytes=1024, backupCount=5, encoding='utf-8', delay=False)
+file_logger2.setFormatter(log_format)
+app.logger.addHandler(file_logger2)
+
+app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
+app.config.update(
+    DEBUG=True,
+    MAX_CONTENT_LENGTH=1024*1024*10,
+    SECRET_KEY='F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT',
+    SESSION_COOKIE_NAME='jpub_flask_session'
+)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route('/')
 def index():
     return render_template('index.html', name="OneWay")
+
+
+@app.route('/hello')
+def hello():
+    return render_template('hello.html', name="제이펍")
+
+
+@app.route("/log")
+def logger():
+    app.logger.debug("DEBUG 메시지를 출력합니다")
+    return "콘솔을 확인하여 주시기 바랍니다."
 
 
 @app.route("/example/max_content_len", methods=["GET"])

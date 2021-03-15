@@ -1,1 +1,0 @@
-self.app.post(data={"keyword":"jpub"}, path="/board/write")

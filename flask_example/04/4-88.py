@@ -1,1 +1,0 @@
-tel1 = TextField('지역번호',  [validators.InputRequired(), KoreaRegionTelValidator()])

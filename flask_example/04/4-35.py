@@ -1,1 +1,0 @@
->>> collection.User.find( { price: { $not: { $gt: 1.99 } } } )

@@ -1,1 +1,0 @@
-task = add_together.apply_async(kwargs={"a":10, "b:"10})

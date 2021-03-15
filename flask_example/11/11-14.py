@@ -1,1 +1,0 @@
-task = add_together.apply_async((10, 10))

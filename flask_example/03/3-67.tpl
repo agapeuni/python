@@ -1,1 +1,0 @@
-{{ my_time | korean_date )}}

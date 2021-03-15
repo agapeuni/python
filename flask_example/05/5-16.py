@@ -1,1 +1,0 @@
-simple_page.add_app_template_filter(_jinja2_filter_date, 'date')

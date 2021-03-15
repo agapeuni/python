@@ -1,1 +1,0 @@
-<link href='/simple_static/simple_page.css'/>

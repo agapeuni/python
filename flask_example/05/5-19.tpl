@@ -1,1 +1,0 @@
-{{ regdate | date('%Y-%m-%d') }}

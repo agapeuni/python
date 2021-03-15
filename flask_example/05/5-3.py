@@ -1,1 +1,0 @@
-admin_page = Blueprint('admin_page', __name__)

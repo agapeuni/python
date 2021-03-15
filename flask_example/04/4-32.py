@@ -1,1 +1,0 @@
->>> collection.User.find( { qty: { $in: [20, 30, 40] } } )

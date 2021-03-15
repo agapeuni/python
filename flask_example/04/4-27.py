@@ -1,1 +1,0 @@
->>> collection.User.find({'name': u'admin'})

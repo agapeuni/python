@@ -1,1 +1,0 @@
->>> users.select(users.c.id == 1).execute().first()

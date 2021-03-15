@@ -1,6 +1,0 @@
-{% for field in form %}
-    <tr>
-        <th>{{ field.label }}</th>
-        <td>{{ field }}</td>
-    </tr>
-{% endfor %}

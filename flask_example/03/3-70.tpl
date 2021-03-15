@@ -1,1 +1,0 @@
-{{ my_contents | nl2br | striptags }}

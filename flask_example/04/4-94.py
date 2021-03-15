@@ -1,1 +1,0 @@
-credit_number = TextField('신용카드 번호', [validators.InputRequired(), CreditCardNumValidator()])

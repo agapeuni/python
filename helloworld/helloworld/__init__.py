@@ -19,16 +19,17 @@ def example_content_length():
     return ""
 
 
-
 @app.route("/session_set")
 def session_set():
     session['ID'] = 'JPUB Flask Session Setting'
     return "세션이 설정되었습니다"
 
+
 @app.route("/session_out")
 def session_out():
     del session['ID']
     return "세션이 제거되었습니다."
+
 
 @app.route("/cookie_set")
 def cookie_set():

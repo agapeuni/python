@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package demo.code;
+
+service Demo {
+    rpc Select(DemoRequest) returns (DemoResponse) {}        
+    rpc Insert(DemoRequest) returns (DemoResponse) {}
+    rpc Update(DemoRequest) returns (DemoResponse) {}
+    rpc Delete(DemoRequest) returns (DemoResponse) {}
+}
+
+message DemoRequest {
+    string name = 1;
+    int32 count = 2;
+}
+
+
+message DemoResponse {
+    string name = 1;
+    int32 total = 2;
+}

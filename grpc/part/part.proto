@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package part.code;
+
+service Part {
+	rpc getPartList(PartRequest) returns (PartResponse) {}
+	rpc getPart(PartRequest) returns (PartResponse) {}
+	rpc createPart(PartRequest) returns (PartResponse) {}
+	rpc modifyPart(PartRequest) returns (PartResponse) {}
+	rpc removePart(PartRequest) returns (PartResponse) {}
+	rpc changePart(PartRequest) returns (PartResponse) {}
+}
+
+message PartRequest {
+	string id = 1;
+	string name = 2;
+	int32 count = 3;
+	string change_name = 4;
+}
+
+message PartResponse {
+	string id = 1;
+	string name = 2;
+	int32 count = 3;
+	int32 total = 4;
+	string change_name = 5;
+	string part_list = 6;
+	bool result = 7;
+}

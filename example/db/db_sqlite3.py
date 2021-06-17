@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connection 생성
-conn = sqlite3.connect("data/example.db")
+conn = sqlite3.connect("example/db/example.db")
 
 # Cursor 생성
 cursor = conn.cursor()

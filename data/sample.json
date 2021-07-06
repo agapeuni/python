@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "Code": "A1",
+            "Name": "item1",
+            "Date": "2020-09-19"
+        },
+        {
+            "Code": "A2",
+            "Name": "item2",
+            "Date": "2020-09-19",
+            "Hobby": [
+                "Tennis",
+                "Cook"
+            ]
+        },
+        {
+            "Code": "B1",
+            "Name": "item1",
+            "Date": "2020-09-20",
+            "Memo": {
+                "Hobby1": "Music",
+                "Hobby2": "Movie"
+            }
+        },
+        {
+            "Code": "B2",
+            "Name": "item1",
+            "Date": "2020-09-20"
+        }
+    ]
+}

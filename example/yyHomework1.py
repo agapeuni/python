@@ -10,6 +10,7 @@ first_list = [1, 5, 6, 8, 10, 7, 4, 9, 4, 8, 4]
 result_list = []
 result_dic = {}
 
+
 for val in first_list:
     if val not in result_list:
         result_list.append(val)

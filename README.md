@@ -21,12 +21,16 @@ gRPC 메시지는 효율적인 이진 메시지 형식인 Protobuf를 사용하�
 - Demo : 한영일 각각 합산
 - Part : 부품별 재고 계산
 
+
 ## image
 - RGB
 - Nagano Mei
 
+
 ## package
+Python Package 연습
 
 
 ## Pybo (Flask)
 점프 투 플래스크 실습
+

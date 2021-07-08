@@ -1,19 +1,17 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 plt.rc('font', family='gulim')
 
-x = np.arange(0, 10, 0.2)
-y1 = np.sin(x)
-y2 = np.cos(x)
+ratio = [60, 50, 40, 30, 20, 10]
+labels = ['10대', '20대', '30대', '40대', '50대', '60대']
 
-plt.title('사인, 코사인 그래프')
-plt.xlabel('x축')
-plt.ylabel('y축')
-plt.legend()
+#plt.pie(ratio, labels=labels, autopct='%.1f%%')
 
-plt.plot(x, y1, label="사인")
-plt.plot(x, y2, label="코사인")
+sido = ['서울', '부산', '대구', '인천', '광주', '대전', '울산', '세종',
+        '경기', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주']
+count = [9911088, 3438710, 2446144, 3010476, 1471385, 1480777, 1153901, 360907,
+         13807158, 1560172, 1637897, 2185575, 1835392, 1884455, 2691891, 3407455, 697578]
 
-plt.legend()
+
+plt.pie(count, labels=sido, autopct='%.1f%%')
 plt.show()

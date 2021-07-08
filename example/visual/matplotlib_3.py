@@ -1,23 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-r = np.arange(0, 20, 1)
+plt.rc('font', family='gulim')
 
-plt.plot(  r, r*2,         # line
-           r, r*2.5, '--'  # dotted line
-         , r, r*3, '^'     # triangle
-         , r, r*3.5, 'v'   # triangle
-         , r, r*4, '<'     # triangle
-         , r, r*4.5, '>'   # triangle
-         , r, r*5, 's'     # square
-         , r, r*5.5, 'd'   # square(dice)
-         , r, r*6, 'p'     # pentagon
-         , r, r*6.5, 'h'   # hexagon
-         , r, r*7, 'o'     # circle
-         , r, r*7.5, '+'   # cross
-         , r, r*8, '*'     # star
-         , r, r*8.5, 'x'   # cross
-         , r, r*9, '.'     # big dot
-         , r, r*9.5, ','   # small dot
-         )
-plt.show()      
+x = np.arange(0, 10, 0.2)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.title('사인, 코사인 그래프')
+plt.xlabel('x축')
+plt.ylabel('y축')
+plt.legend()
+
+plt.plot(x, y1, label="사인")
+plt.plot(x, y2, label="코사인")
+
+plt.legend()
+plt.show()
+

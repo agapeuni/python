@@ -1,5 +1,5 @@
 import sys
-sys.path.append("D:\Z_Package\mod")
+sys.path.append("D:\GitHub\python\package\mod")
 
 import mod1
 print(mod1.add(2, 1))

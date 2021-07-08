@@ -1,16 +1,17 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-r = np.arange(0, 10, 1)
+x1 = np.arange(0.0, 2 * np.pi, 0.1)
+x2 = np.arange(0.0, 2 * np.pi, 0.1)
 
-plt.plot(  r, r * 2, 'r--'  # red line
-         , r, r * 3, 'g--'  # green
-         , r, r * 4, 'b--'  # blue
-         , r, r * 5, 'y--'  # yellow
-         , r, r * 6, 'c--'  # cyan
-         , r, r * 7, 'm--'  # magenta
-         , r, r * 8, 'w--'  # white
-         , r, r * 9, 'k--'  # black
-         )
+plt.figure(1)
+plt.subplot(221)
+plt.plot(x1, np.sin(x1), 'r--', x2, np.sin(x2), 'k')
+
+plt.subplot(224)
+plt.plot(x2, np.sin(2 * np.pi * x2), 'g--')
+
+plt.figure(2)
+plt.plot(x1, np.cos(x1), 'b--')
+
 plt.show()
-

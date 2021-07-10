@@ -1,26 +1,15 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
 options = webdriver.ChromeOptions()
-options.add_argument('window-size=1920,1080')
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+options.add_argument('window-size=1024,768')
 
-driver = webdriver.Chrome('chromedriver', options=options)
-driver.implicitly_wait(5)
+browser = webdriver.Chrome('chromedriver', options=options)
+browser.implicitly_wait(5)
 
-driver.get(url='https://www.google.com/')
+browser.get(url='https://blog.naver.com/agapeuni')
+browser.save_screenshot("example/selenium/WebSite.png")
 
-search_box = driver.find_element_by_xpath('/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
-
-search_box.send_keys('삼성')
-search_box.send_keys(Keys.RETURN)
-
-elements = driver.find_elements_by_xpath('//*[@id="rso"]/div[1]/div/div/div/div[1]/a/div/cite')
-
-for element in elements:
-print(element.text)
-print(element.text, file=open('gorio.txt', 'w', encoding='utf-8'))
-
-sleep(3)
-driver.close()
+browser.quit()
